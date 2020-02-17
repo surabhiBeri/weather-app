@@ -14,25 +14,26 @@ app.set('views',viewPath)
 hbs.registerPartials(partialsPath)
 
 app.use(express.static(publicDirectoryPath))
+app.use(express.json())
 
 app.get('',(req,res)=>{
     res.render('index',{
         title:'Weather',
-        name:"Andrew"
+        name:"Surabhi"
     })
 })
 
 app.get('/about',(req,res)=>{
     res.render('about',{
         title:'About Me',
-        name:'Andrew'
+        name:'Surabhi'
     })
 })
 
 app.get('/help',(req,res)=>{
     res.render('help',{
         title:'Help',
-        name:'Andrew',
+        name:'Surabhi',
         helpText:'This is a weather app. It gives the weather report of the location.'
 
     })
@@ -63,21 +64,10 @@ app.get('/weather',(req,res)=>{
     
 })
 
-app.get('/products',(req,res)=>{
-    if(!req.query.search){
-        return res.send({
-            error:'product not found'
-        })
-    }
-    res.send({
-        products:[]
-    })
-})
-
 app.get('/help/*',(req,res)=>{
     res.render('404',{
         title:'Error',
-        name:'Andrew',
+        name:'Surabhi',
         errorMessage:'Help article not found'
     })
 })
@@ -85,7 +75,7 @@ app.get('/help/*',(req,res)=>{
 app.get('*',(req,res)=>{
     res.render('404',{
         title:'Error',
-        name:'Andrew',
+        name:'Surabhi',
         errorMessage:'Page Not Found'
     })
 })
